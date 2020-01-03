@@ -16,8 +16,8 @@ var programming_languages = [
   "fortran"
 ]
 
-function guessWord() {
+function randomWord() {
   return programming_languages[Math.floor(Math.random() * programming_languages.length)]
 }
 
-export { guessWord }
+export { randomWord }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Hangman from './components/Hangman.js';
+import Hangman from './components/Hangman';
 
 function App() {
   return (

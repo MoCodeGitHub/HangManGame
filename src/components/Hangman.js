@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Hangman.css';
-import { guessword } from './guessword.js';
+import { randomWord } from './Word.js';
 
 import step0 from  './images/0.jpg';
 import step1 from  './images/1.jpg';
@@ -13,15 +13,24 @@ import step6 from  './images/6.jpg';
 
 
 class Hangman extends Component {
-  static defaultProps = {
+    static defaultProps = {
     maxWrong: 6,
-    images: [step0, step1, step2, step3, step4, step5, step6]
+    images: [ step0, step1, step2, step3, step4, step5, step6 ]
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      mistake: 0,
+      guessed: new Set([]),
+      answer: randomWord()
+    }
   }
 
   render () {
     return (
-      <div>
-      <h1> Hangman </h1>
+      <div className="Hangman container" >
+      <h1 className="text-center"> Hangman </h1>
       </div>
     )
   }
