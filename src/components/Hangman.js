@@ -27,13 +27,25 @@ class Hangman extends Component {
     }
   }
 
+  guessedWord(){
+    return this.state.answer.split("").map(letter => (this.state.guessed.has.letter ? letter : "_" ));
+  }
+
   render () {
+    const gameOver = this.state.mistake >= this.props.maxWrong;
+
     return (
       <div className="Hangman container" >
       <h1 className="text-center"> Hangman </h1>
       <div className="float-right">Wrong guesses: {this.state.mistake} of {this.props.maxWrong}</div>
       <div className="text-center">
         <img src={this.props.images[this.state.mistake]} alt=""/>
+        </div>
+      <div className="text-center">
+      <p>Guess The Programming Language:</p>
+      <p>
+      {!gameOver ? this.guessedWord() : this.state.answer }
+      </p>
       </div>
     </div>
     )
