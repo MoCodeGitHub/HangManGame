@@ -31,6 +31,7 @@ class Hangman extends Component {
     return (
       <div className="Hangman container" >
       <h1 className="text-center"> Hangman </h1>
+      <div className="float-right">Wrong guesses: {this.state.mistake} of {this.props.maxWrong}</div>
       </div>
     )
   }
