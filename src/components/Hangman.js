@@ -42,15 +42,26 @@ class Hangman extends Component {
   generateButtons(){
     return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map( letter => (
       <button
-      class='btn btn-lg btn-warning m-2'
-      key={letter}
-      value={letter}
-      onClick={this.handleGuess}
-      disabled={this.state.guessed.has(letter)}
+        class='btn btn-lg btn-warning m-2'
+        key={letter}
+        value={letter}
+        onClick={this.handleGuess}
+        disabled={this.state.guessed.has(letter)}
       >
         {letter}
       </button>
     ));
+  }
+
+  resetButton = () => {
+    this.setState(
+      {
+        mistake: 0,
+        guessed: new Set([]),
+        answer: randomWord()
+
+      }
+    )
   }
 
   render () {
@@ -71,6 +82,9 @@ class Hangman extends Component {
       </p>
       <p>{gameStat }
             </p>
+            <button
+              class='btn btn-lg btn-info m-2' onClick={this.resetButton}>RESET
+        </button>
       </div>
     </div>
     )
