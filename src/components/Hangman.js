@@ -31,8 +31,17 @@ class Hangman extends Component {
     return this.state.answer.split("").map(letter => (this.state.guessed.has.letter ? letter : "_" ));
   }
 
+  generateButtons(){
+    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map( letter => (
+      <button>
+        {letter}
+      </button>
+    ));
+  }
+
   render () {
     const gameOver = this.state.mistake >= this.props.maxWrong;
+    let gameStat = this.generateButtons();
 
     return (
       <div className="Hangman container" >
@@ -46,6 +55,8 @@ class Hangman extends Component {
       <p>
       {!gameOver ? this.guessedWord() : this.state.answer }
       </p>
+      <p>{gameStat }
+            </p>
       </div>
     </div>
     )
